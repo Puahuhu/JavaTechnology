@@ -3,7 +3,6 @@ public class Product {
     private String name;
     private double price;
 
-    // Constructors, getters, and setters
     public Product() {
     }
 
@@ -42,7 +41,6 @@ public class Product {
         this.price = price;
     }
 
-    @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
     }
