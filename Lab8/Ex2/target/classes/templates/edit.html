@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee</title>
+</head>
+<body>
+<h2>Edit Employee</h2>
+<form th:action="@{'/employees/edit/' + ${employee.id}}" method="post">
+  <label>Name</label>
+  <input type="text" name="name" th:value="${employee.name}" required>
+
+  <label>Email</label>
+  <input type="email" name="email" th:value="${employee.email}" required>
+
+  <label>Address</label>
+  <textarea name="address" th:text="${employee.address}" required></textarea>
+
+  <label>Phone</label>
+  <input type="text" name="phone" th:value="${employee.phone}" required>
+
+  <button type="submit">Save Changes</button>
+</form>
+</body>
+</html>
