@@ -10,7 +10,6 @@ public class Brand {
     private int id;
     private String name;
 
-    // Constructors
     public Brand() {}
 
     public Brand(int id, String name) {
@@ -18,7 +17,6 @@ public class Brand {
         this.name = name;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -38,5 +36,4 @@ public class Brand {
     public String toString() {
         return name;
     }
-
 }

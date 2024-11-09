@@ -31,13 +31,8 @@ public class OrderDetail {
         this.totalPrice = totalPrice;
     }
 
-    // Getters và Setters
     public Long getId() {
         return id;
-    }
-
-    public Order getOrder() {
-        return order;
     }
 
     public Product getProduct() {
@@ -50,21 +45,5 @@ public class OrderDetail {
 
     public double getTotalPrice() {
         return totalPrice;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 }

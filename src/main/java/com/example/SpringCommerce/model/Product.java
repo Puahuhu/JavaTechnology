@@ -13,15 +13,14 @@ public class Product {
     private double price;
 
     @ManyToOne
-    private Category category;  // Liên kết với Category
+    private Category category;
 
     @ManyToOne
-    private Brand brand;  // Liên kết với Brand
+    private Brand brand;
 
     @ManyToOne
-    private Color color;  // Liên kết với Color
+    private Color color;
 
-    // Constructors
     public Product() {}
 
     public Product(int id, String name, double price, Category category, Brand brand, Color color) {
@@ -33,7 +32,6 @@ public class Product {
         this.color = color;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -54,35 +52,18 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public Category getCategory() {
         return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
     public Color getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -92,7 +73,6 @@ public class Product {
         return id == product.id;
     }
 
-    @Override
     public int hashCode() {
         return id;
     }

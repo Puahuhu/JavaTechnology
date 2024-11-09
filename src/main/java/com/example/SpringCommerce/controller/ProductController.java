@@ -47,7 +47,6 @@ public class ProductController {
             @RequestParam(value = "color", required = false) String color,
             Model model) {
 
-        // Lấy danh sách categories, brands, và colors từ cơ sở dữ liệu
         List<Category> categories = categoryRepository.findAll();
         List<Brand> brands = brandRepository.findAll();
         List<Color> colors = colorRepository.findAll();
@@ -56,11 +55,9 @@ public class ProductController {
         model.addAttribute("brands", brands);
         model.addAttribute("colors", colors);
 
-        // Lọc sản phẩm theo các tiêu chí
         List<Product> products = productService.filterProducts(category, priceMin, priceMax, brand, color);
         model.addAttribute("products", products);
 
-        // Thêm giỏ hàng vào model để hiển thị
         model.addAttribute("cartItems", cartService.getCartItems());
         model.addAttribute("totalQuantity", cartService.getTotalQuantity());
         model.addAttribute("totalPrice", cartService.getTotalPrice());
@@ -86,29 +83,28 @@ public class ProductController {
 
     @GetMapping("/clear-cart")
     public String clearCart() {
-        cartService.clearCart(); // Gọi phương thức để xóa toàn bộ giỏ hàng
-        return "redirect:/products"; // Chuyển hướng lại trang sản phẩm
+        cartService.clearCart();
+        return "redirect:/products";
     }
 
     @GetMapping("/checkout")
     public String checkout(Model model) {
         double totalPrice = cartService.getTotalPrice();
         Order order = new Order(totalPrice);
-        orderRepository.save(order); // Lưu đơn hàng vào cơ sở dữ liệu
+        orderRepository.save(order);
 
         List<OrderDetail> orderDetails = cartService.getCartItems().entrySet().stream()
                 .map(entry -> new OrderDetail(order, entry.getKey(), entry.getValue(), entry.getKey().getPrice() * entry.getValue()))
                 .collect(Collectors.toList());
 
-        orderDetailRepository.saveAll(orderDetails); // Lưu tất cả các chi tiết đơn hàng vào database
+        orderDetailRepository.saveAll(orderDetails);
         order.setOrderDetails(orderDetails);
 
-        // Thêm order và các sản phẩm trong giỏ hàng vào model để hiển thị
         model.addAttribute("order", order);
         model.addAttribute("orderDetails", orderDetails);
         model.addAttribute("totalPrice", totalPrice);
 
-        cartService.clearCart(); // Xóa giỏ hàng sau khi thanh toán
+        cartService.clearCart();
 
         return "order-confirmation";
     }

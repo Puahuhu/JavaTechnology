@@ -10,7 +10,6 @@ public class Category {
     private int id;
     private String name;
 
-    // Constructors
     public Category() {}
 
     public Category(int id, String name) {
@@ -18,7 +17,6 @@ public class Category {
         this.name = name;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -38,5 +36,4 @@ public class Category {
     public String toString() {
         return name;
     }
-
 }

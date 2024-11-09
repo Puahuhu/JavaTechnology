@@ -10,7 +10,6 @@ public class Color {
     private int id;
     private String name;
 
-    // Constructors
     public Color() {}
 
     public Color(int id, String name) {
@@ -18,7 +17,6 @@ public class Color {
         this.name = name;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
