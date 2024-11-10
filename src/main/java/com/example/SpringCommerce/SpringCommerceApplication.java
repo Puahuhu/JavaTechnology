@@ -36,7 +36,7 @@ public class SpringCommerceApplication {
 			productRepository.save(new Product("Assassin's Creed: Origins", 990000, offline, ubisoft, hanhDong, "images/ac_origins.jpg"));
 			productRepository.save(new Product("Assassin's Creed Odyssey", 990000, offline, ubisoft, hanhDong, "images/ac_odyssey.jpg"));
 			productRepository.save(new Product("Assassin's Creed Valhalla", 990000, offline, ubisoft, hanhDong, "images/ac_valhalla.jpg"));
-			productRepository.save(new Product("Pacify", 73000, offline, hitchcockGames, kinhDi, "images/pacify.jpg"));
+			productRepository.save(new Product("Pacify", 73000, online, hitchcockGames, kinhDi, "images/pacify.jpg"));
 			productRepository.save(new Product("The Dark Pictures Anthology - Man of Medan", 348000, offline, supermassiveGames, kinhDi, "images/man_of_medan.jpg"));
 			productRepository.save(new Product("The Dark Pictures Anthology: Little Hope", 348000, offline, supermassiveGames, kinhDi, "images/little_hope.jpg"));
 			productRepository.save(new Product("The Dark Pictures Anthology: House of Ashes", 350000, offline, supermassiveGames, kinhDi, "images/house_of_ashes.jpg"));
