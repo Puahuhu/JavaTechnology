@@ -1,6 +1,5 @@
 package com.example.SpringCommerce.model;
 
-import com.example.SpringCommerce.repository.StudioRepository;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;

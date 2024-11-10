@@ -14,13 +14,13 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> filterProducts(String category, Double priceMin, Double priceMax, String brand, String color) {
+    public List<Product> filterProducts(String category, Double priceMin, Double priceMax, String studio, String genre) {
         return productRepository.findProductsByFilters(
                 category != null && !category.isEmpty() ? category : null,
                 priceMin,
                 priceMax,
-                brand != null && !brand.isEmpty() ? brand : null,
-                color != null && !color.isEmpty() ? color : null
+                studio != null && !studio.isEmpty() ? studio : null,
+                genre != null && !genre.isEmpty() ? genre : null
         );
     }
 

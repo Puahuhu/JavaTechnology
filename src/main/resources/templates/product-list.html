@@ -48,22 +48,22 @@
             th:text="${category.name}"></option>
   </select><br>
 
-  <!-- Dropdown Brand -->
-  <label for="brand">Studio: </label>
-  <select id="brand" name="brand">
-    <option value="" th:selected="${brand == null}">All Studios</option>
-    <option th:each="brand : ${brands}"
-            th:value="${brand.name}"
-            th:text="${brand.name}"></option>
+  <!-- Dropdown studio -->
+  <label for="studio">Studio: </label>
+  <select id="studio" name="studio">
+    <option value="" th:selected="${studio == null}">All Studios</option>
+    <option th:each="studio : ${studios}"
+            th:value="${studio.name}"
+            th:text="${studio.name}"></option>
   </select><br>
 
   <!-- Dropdown Color -->
-  <label for="color">Genre: </label>
-  <select id="color" name="color">
-    <option value="" th:selected="${color == null}">All Genres</option>
-    <option th:each="color : ${colors}"
-            th:value="${color.name}"
-            th:text="${color.name}"></option>
+  <label for="genre">Genre: </label>
+  <select id="genre" name="genre">
+    <option value="" th:selected="${genre == null}">All Genres</option>
+    <option th:each="genre : ${genres}"
+            th:value="${genre.name}"
+            th:text="${genre.name}"></option>
   </select><br>
 
   <label for="priceMin">Price Min: </label>
