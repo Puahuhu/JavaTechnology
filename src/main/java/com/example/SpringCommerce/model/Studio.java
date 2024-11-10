@@ -1,19 +1,21 @@
 package com.example.SpringCommerce.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Studio {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
     public Studio() {}
 
-    public Studio(int id, String name) {
-        this.id = id;
+    public Studio(String name) {
         this.name = name;
     }
 
