@@ -49,18 +49,18 @@
   </select><br>
 
   <!-- Dropdown Brand -->
-  <label for="brand">Brand: </label>
+  <label for="brand">Studio: </label>
   <select id="brand" name="brand">
-    <option value="" th:selected="${brand == null}">All Brands</option>
+    <option value="" th:selected="${brand == null}">All Studios</option>
     <option th:each="brand : ${brands}"
             th:value="${brand.name}"
             th:text="${brand.name}"></option>
   </select><br>
 
   <!-- Dropdown Color -->
-  <label for="color">Color: </label>
+  <label for="color">Genre: </label>
   <select id="color" name="color">
-    <option value="" th:selected="${color == null}">All Colors</option>
+    <option value="" th:selected="${color == null}">All Genres</option>
     <option th:each="color : ${colors}"
             th:value="${color.name}"
             th:text="${color.name}"></option>

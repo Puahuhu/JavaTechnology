@@ -13,8 +13,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "(:category IS NULL OR p.category.name = :category) AND " +
             "(:priceMin IS NULL OR p.price >= :priceMin) AND " +
             "(:priceMax IS NULL OR p.price <= :priceMax) AND " +
-            "(:brand IS NULL OR p.brand.name = :brand) AND " +
-            "(:color IS NULL OR p.color.name = :color)")
+            "(:brand IS NULL OR p.studio.name = :brand) AND " +
+            "(:color IS NULL OR p.genre.name = :color)")
     List<Product> findProductsByFilters(
             @Param("category") String category,
             @Param("priceMin") Double priceMin,

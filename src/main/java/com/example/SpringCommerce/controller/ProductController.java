@@ -27,10 +27,10 @@ public class ProductController {
     private CategoryRepository categoryRepository;
 
     @Autowired
-    private BrandRepository brandRepository;
+    private StudioRepository studioRepository;
 
     @Autowired
-    private ColorRepository colorRepository;
+    private GenreRepository genreRepository;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -48,8 +48,8 @@ public class ProductController {
             Model model) {
 
         List<Category> categories = categoryRepository.findAll();
-        List<Brand> brands = brandRepository.findAll();
-        List<Color> colors = colorRepository.findAll();
+        List<Studio> brands = studioRepository.findAll();
+        List<Genre> colors = genreRepository.findAll();
 
         model.addAttribute("categories", categories);
         model.addAttribute("brands", brands);

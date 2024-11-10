@@ -1,15 +1,7 @@
 package com.example.SpringCommerce;
 
-import com.example.SpringCommerce.model.Account;
-import com.example.SpringCommerce.model.Brand;
-import com.example.SpringCommerce.model.Category;
-import com.example.SpringCommerce.model.Color;
-import com.example.SpringCommerce.model.Product;
-import com.example.SpringCommerce.repository.AccountRepository;
-import com.example.SpringCommerce.repository.BrandRepository;
-import com.example.SpringCommerce.repository.CategoryRepository;
-import com.example.SpringCommerce.repository.ColorRepository;
-import com.example.SpringCommerce.repository.ProductRepository;
+import com.example.SpringCommerce.model.*;
+import com.example.SpringCommerce.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,21 +16,21 @@ public class SpringCommerceApplication {
 
 	@Bean
 	CommandLineRunner runner(ProductRepository productRepository, AccountRepository accountRepository,
-							 CategoryRepository categoryRepository, BrandRepository brandRepository, ColorRepository colorRepository) {
+							 CategoryRepository categoryRepository, StudioRepository studioRepository, GenreRepository genreRepository) {
 		return args -> {
 			Category electronics = categoryRepository.save(new Category(1, "Electronics"));
 			Category clothing = categoryRepository.save(new Category(2,"Clothing"));
 			Category furniture = categoryRepository.save(new Category(3, "Furniture"));
 
-			Brand brandA = brandRepository.save(new Brand(1, "Brand A"));
-			Brand brandB = brandRepository.save(new Brand(2, "Brand B"));
-			Brand brandC = brandRepository.save(new Brand(3, "Brand C"));
+			Studio brandA = studioRepository.save(new Studio(1, "Brand A"));
+			Studio brandB = studioRepository.save(new Studio(2, "Brand B"));
+			Studio brandC = studioRepository.save(new Studio(3, "Brand C"));
 
-			Color red = colorRepository.save(new Color(1, "Red"));
-			Color blue = colorRepository.save(new Color(2, "Blue"));
-			Color green = colorRepository.save(new Color(3, "Green"));
-			Color black = colorRepository.save(new Color(4, "Black"));
-			Color yellow = colorRepository.save(new Color(5, "Yellow"));
+			Genre red = genreRepository.save(new Genre(1, "Red"));
+			Genre blue = genreRepository.save(new Genre(2, "Blue"));
+			Genre green = genreRepository.save(new Genre(3, "Green"));
+			Genre black = genreRepository.save(new Genre(4, "Black"));
+			Genre yellow = genreRepository.save(new Genre(5, "Yellow"));
 
 			productRepository.save(new Product(1, "Product 1", 100.0, electronics, brandA, red));
 			productRepository.save(new Product(2, "Product 2", 150.0, clothing, brandB, blue));

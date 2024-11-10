@@ -1,5 +1,6 @@
 package com.example.SpringCommerce.model;
 
+import com.example.SpringCommerce.repository.StudioRepository;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -16,20 +17,20 @@ public class Product {
     private Category category;
 
     @ManyToOne
-    private Brand brand;
+    private Studio studio;
 
     @ManyToOne
-    private Color color;
+    private Genre genre;
 
     public Product() {}
 
-    public Product(int id, String name, double price, Category category, Brand brand, Color color) {
+    public Product(int id, String name, double price, Category category, Studio studio, Genre genre) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.category = category;
-        this.brand = brand;
-        this.color = color;
+        this.studio = studio;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -56,12 +57,12 @@ public class Product {
         return category;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Studio getStudio() {
+        return studio;
     }
 
-    public Color getColor() {
-        return color;
+    public Genre getGenre() {
+        return genre;
     }
 
     public boolean equals(Object o) {
