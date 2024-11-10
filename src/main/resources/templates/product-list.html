@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game trên Steam</title>
+    <title>Game Shopping</title>
     <link rel="stylesheet" href="css/product_list.css">
 </head>
 <body>
@@ -50,21 +50,25 @@
 
         <div class="content-wrapper">
             <div class="product-grid">
-              <div th:each="product : ${products}" class="product">
-                <img src="images/wukong.png" alt="Random Code Steam">
-                <p class="title" th:text="${product.name}"></p>
-                <p class="price" th:text="${product.price}"></p>
-                <button class="add-cart-button">
-                  <a th:href="@{/add-to-cart/{id}(id=${product.id})}">Thêm</a>
-                </button>
-              </div>
+                <div th:each="product : ${products}" class="product">
+                    <a th:href="@{/product/{id}(id=${product.id})}">
+                        <img th:src="${product.img}" alt="Random Code Steam">
+                    </a>
+                    <a th:href="@{/product/{id}(id=${product.id})}" class="title-link">
+                        <p class="title" th:text="${product.name}"></p>
+                    </a>
+                    <p class="price" th:text="${product.price} + ' đ'"></p>
+                    <button class="add-cart-button">
+                        <a th:href="@{/add-to-cart/{id}(id=${product.id})}">Thêm</a>
+                    </button>
+                </div>
             </div>
 
             <div class="cart">
                 <h2>Giỏ hàng</h2>
                 <div th:if="${cartItems.size() > 0}">
                     <div th:each="entry : ${cartItems}" class="cart-item">
-                        <p th:text="${entry.key.name} + ' - Quantity: ' + ${entry.value} + ' - Total: ' + (${entry.key.price} * ${entry.value}) + ' USD'"></p>
+                        <p th:text="${entry.key.name} + ' - Số lượng: ' + ${entry.value} + ' - Tổng: ' + (${entry.key.price} * ${entry.value}) + ' đ'"></p>
                     </div>
                     <a href="/clear-cart" class="clear-cart-button">Làm mới</a>
                     <a href="/checkout" class="checkout-button">Thanh toán</a>

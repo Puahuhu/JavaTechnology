@@ -10,6 +10,7 @@ public class Product {
     private int id;
     private String name;
     private double price;
+    private String img;
 
     @ManyToOne
     private Category category;
@@ -22,12 +23,13 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, double price, Category category, Studio studio, Genre genre) {
+    public Product(String name, double price, Category category, Studio studio, Genre genre, String img) {
         this.name = name;
         this.price = price;
         this.category = category;
         this.studio = studio;
         this.genre = genre;
+        this.img = img;
     }
 
     public int getId() {
@@ -60,6 +62,10 @@ public class Product {
 
     public Genre getGenre() {
         return genre;
+    }
+
+    public String getImg() {
+        return img;
     }
 
     public boolean equals(Object o) {

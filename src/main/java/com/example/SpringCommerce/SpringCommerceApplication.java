@@ -24,16 +24,23 @@ public class SpringCommerceApplication {
 			Studio fromSoftware = studioRepository.save(new Studio("From Software "));
 			Studio gameScience = studioRepository.save(new Studio("Game Science"));
 			Studio ubisoft = studioRepository.save(new Studio("Ubisoft"));
+			Studio hitchcockGames = studioRepository.save(new Studio("Hitchcock Games"));
+			Studio supermassiveGames = studioRepository.save(new Studio("Supermassive Games"));
 
 			Genre hanhDong = genreRepository.save(new Genre("Hành động"));
 			Genre kinhDi = genreRepository.save(new Genre("Kinh dị"));
 			Genre soul = genreRepository.save(new Genre("Soul"));
 
-			productRepository.save(new Product("Elden Ring", 100.0, online, fromSoftware, soul));
-			productRepository.save(new Product("Black Myth Wukong", 150.0, offline, gameScience, hanhDong));
-			productRepository.save(new Product("Assassin's Creed: Origins", 250.0, offline, ubisoft, hanhDong));
-			productRepository.save(new Product("Assassin's Creed Odyssey", 300.0, online, ubisoft, hanhDong));
-			productRepository.save(new Product("Assassin's Creed Valhalla", 350.0, offline, ubisoft, hanhDong));
+			productRepository.save(new Product("Elden Ring", 990000, online, fromSoftware, soul, "images/elden-ring.png"));
+			productRepository.save(new Product("Black Myth Wukong", 990000, offline, gameScience, hanhDong, "images/wukong.png"));
+			productRepository.save(new Product("Assassin's Creed: Origins", 990000, offline, ubisoft, hanhDong, "images/ac_origins.jpg"));
+			productRepository.save(new Product("Assassin's Creed Odyssey", 990000, offline, ubisoft, hanhDong, "images/ac_odyssey.jpg"));
+			productRepository.save(new Product("Assassin's Creed Valhalla", 990000, offline, ubisoft, hanhDong, "images/ac_valhalla.jpg"));
+			productRepository.save(new Product("Pacify", 73000, offline, hitchcockGames, kinhDi, "images/pacify.jpg"));
+			productRepository.save(new Product("The Dark Pictures Anthology - Man of Medan", 348000, offline, supermassiveGames, kinhDi, "images/man_of_medan.jpg"));
+			productRepository.save(new Product("The Dark Pictures Anthology: Little Hope", 348000, offline, supermassiveGames, kinhDi, "images/little_hope.jpg"));
+			productRepository.save(new Product("The Dark Pictures Anthology: House of Ashes", 350000, offline, supermassiveGames, kinhDi, "images/house_of_ashes.jpg"));
+			productRepository.save(new Product("The Dark Pictures Anthology: The Devil in Me", 480000, offline, supermassiveGames, kinhDi, "images/the_evil_in_me.jpg"));
 
 			accountRepository.save(new Account(1, "user1", "123"));
 			accountRepository.save(new Account(2, "user2", "123"));

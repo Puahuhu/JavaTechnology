@@ -152,7 +152,8 @@ h1 {
     cursor: pointer;
     text-decoration: none;
     margin-top: 10px;
-    padding: 7px 12px;
+    margin-bottom: 10px;
+    padding: 7px 8px;
     font-size: 15px;
 }
 
@@ -181,4 +182,14 @@ h1 {
 
 .add-cart-button:hover {
     background-color: #0056b3;
+}
+
+.product .title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product .title-link:hover {
+    text-decoration: underline;
+    color: blue;
 }
