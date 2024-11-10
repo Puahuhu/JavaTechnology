@@ -1,115 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Product List</title>
-  <style>
-    .cart {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 250px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-    }
-    .cart h2 {
-      font-size: 16px;
-      margin-top: 0;
-    }
-    .cart-item {
-      font-size: 14px;
-    }
-    .cart-item p {
-      margin: 0;
-    }
-    .clear-cart-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 5px 10px;
-      background-color: #ff4d4d;
-      color: white;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game trên Steam</title>
+    <link rel="stylesheet" href="css/temp.css">
 </head>
 <body>
-<h1>Product List</h1>
+    <div class="container">
+        <h1>Danh mục game</h1>
+        <form action="/products" method="get">
+            <div class="filters">
+                <select id="category" name="category">
+                    <option value="" th:selected="${category == null}">Danh mục</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.name}"
+                            th:text="${category.name}"></option>
+                </select>
 
-<!-- Form lọc sản phẩm -->
-<form action="/products" method="get">
-  <!-- Dropdown Category -->
-  <label for="category">Category: </label>
-  <select id="category" name="category">
-    <option value="" th:selected="${category == null}">All Categories</option>
-    <option th:each="category : ${categories}"
-            th:value="${category.name}"
-            th:text="${category.name}"></option>
-  </select><br>
+                <select id="genre" name="genre">
+                    <option value="" th:selected="${genre == null}">Thể loại</option>
+                    <option th:each="genre : ${genres}"
+                            th:value="${genre.name}"
+                            th:text="${genre.name}"></option>
+                </select>
 
-  <!-- Dropdown studio -->
-  <label for="studio">Studio: </label>
-  <select id="studio" name="studio">
-    <option value="" th:selected="${studio == null}">All Studios</option>
-    <option th:each="studio : ${studios}"
-            th:value="${studio.name}"
-            th:text="${studio.name}"></option>
-  </select><br>
+                <select id="studio" name="studio">
+                    <option value="" th:selected="${studio == null}">Xuất xứ</option>
+                    <option th:each="studio : ${studios}"
+                            th:value="${studio.name}"
+                            th:text="${studio.name}"></option>
+                </select>
 
-  <!-- Dropdown Color -->
-  <label for="genre">Genre: </label>
-  <select id="genre" name="genre">
-    <option value="" th:selected="${genre == null}">All Genres</option>
-    <option th:each="genre : ${genres}"
-            th:value="${genre.name}"
-            th:text="${genre.name}"></option>
-  </select><br>
+                <div class="price-filter">
+                    <span>Mức giá</span>
+                    <input type="number" id="priceMin" placeholder="Mức giá từ" min="0" step="10000" value="0">
+                    <span>-</span>
+                    <input type="number" id="priceMax" placeholder="Mức giá đến" min="0" step="10000" value="0">
+                </div>
 
-  <label for="priceMin">Price Min: </label>
-  <input type="number" id="priceMin" name="priceMin" value="" /><br>
+                <select>
+                    <option selected disabled>Sắp xếp</option>
+                    <option value="macdinh">Mặc định</option>
+                </select>
+                <button class="filter-btn" type="submit">Filter</button>
+                <button class="reset-btn" onclick="resetFilters()">Reset</button>
+            </div>
+        </form>
 
-  <label for="priceMax">Price Max: </label>
-  <input type="number" id="priceMax" name="priceMax" value="" /><br>
+        <div class="content-wrapper">
+            <div class="product-grid">
+              <div th:each="product : ${products}" class="product">
+                <img src="images/wukong.png" alt="Random Code Steam">
+                <p class="title" th:text="${product.name}"></p>
+                <p class="price" th:text="${product.price}"></p>
+                <button class="add-cart-button">
+                  <a th:href="@{/add-to-cart/{id}(id=${product.id})}">Thêm</a>
+                </button>
+              </div>
+            </div>
 
-  <input type="submit" value="Filter" />
-</form>
-
-<!-- Hiển thị danh sách sản phẩm -->
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Action</th>
-  </tr>
-  <tr th:each="product : ${products}">
-    <td th:text="${product.id}"></td>
-    <td><a th:href="@{/product/{id}(id=${product.id})}" th:text="${product.name}"></a></td>
-    <td th:text="${product.price}"></td>
-    <td><a th:href="@{/add-to-cart/{id}(id=${product.id})}">Add to Cart</a></td>
-  </tr>
-</table>
-
-<!-- Phần hiển thị giỏ hàng ở góc phải -->
-<div class="cart">
-  <h2>Shopping Cart</h2>
-  <div th:if="${cartItems.size() > 0}">
-    <div th:each="entry : ${cartItems}" class="cart-item">
-      <p th:text="${entry.key.name} + ' - Quantity: ' + ${entry.value} + ' - Total: ' + (${entry.key.price} * ${entry.value}) + ' USD'"></p>
+            <div class="cart">
+                <h2>Giỏ hàng</h2>
+                <div th:if="${cartItems.size() > 0}">
+                    <div th:each="entry : ${cartItems}" class="cart-item">
+                        <p th:text="${entry.key.name} + ' - Quantity: ' + ${entry.value} + ' - Total: ' + (${entry.key.price} * ${entry.value}) + ' USD'"></p>
+                    </div>
+                    <a href="/clear-cart" class="clear-cart-button">Làm mới</a>
+                    <a href="/checkout" class="checkout-button">Thanh toán</a>
+                </div>
+                <div th:if="${cartItems.size() == 0}">
+                    <p>Giỏ hàng trống.</p>
+                </div>
+                <hr>
+                <p><strong>Số lượng tổng:</strong> <span th:text="${totalQuantity}">0</span></p>
+                <p><strong>Tổng tiền:</strong> <span th:text="${totalPrice}">0</span> đ</p>
+            </div>
+        </div> 
     </div>
-    <!-- Nút Clear Cart -->
-    <a href="/clear-cart" class="clear-cart-button">Clear Cart</a>
-    <!-- Nút Check Out -->
-    <a href="/checkout" class="checkout-button">Check Out</a>
-  </div>
-  <div th:if="${cartItems.size() == 0}">
-    <p>Your cart is empty.</p>
-  </div>
-  <hr>
-  <p><strong>Total Items:</strong> <span th:text="${totalQuantity}"></span></p>
-  <p><strong>Total Price:</strong> <span th:text="${totalPrice}"></span> USD</p>
-</div>
-
+    <script src="js/filters.js"></script>
 </body>
 </html>

@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
+<style>
+    .error-if {
+        margin-top: 30px;
+        color: red;
+        font-size: 14px;
+        text-align: center;
+    }
+</style>
 <body>
-<h1>Login Page</h1>
-
-<form action="/login" method="post">
-  <label for="username">Username: </label><br>
-  <input type="text" id="username" name="username" required><br>
-  <label for="password">Password: </label><br>
-  <input type="password" id="password" name="password" required><br>
-  <input type="submit" value="Login">
-</form>
-
-<div th:if="${error}">
-  <p style="color:red;">[[${error}]]</p>
-</div>
+    <div class="wrapper" style="background-image: url('images/login_background.jpg');">
+        <div class="inner">
+            <div class="image-holder">
+                <img class="bg" src="images/login_mini_background.jpg" alt="">
+            </div>
+            <form action="/login" method="post">
+                <h3>Đăng nhập</h3>
+                <div class="form-wrapper">
+                    <input type="text" placeholder="Username" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-wrapper">
+                    <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit">Đăng nhập</button>
+                <div th:if="${error}" class="error-if">
+                    <p>[[${error}]]</p>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
