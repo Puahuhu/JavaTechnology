@@ -72,7 +72,7 @@
                 <h2>Giỏ hàng</h2>
                 <div th:if="${cartItems.size() > 0}">
                     <div th:each="entry : ${cartItems}" class="cart-item">
-                        <p th:text="${entry.key.name} + ' - Số lượng: ' + ${entry.value} + ' - Tổng: ' + (${entry.key.price} * ${entry.value}) + ' đ'"></p>
+                            <p th:text="${entry.key.name} + ' - Số lượng: ' + ${entry.value}"></p>
                     </div>
                     <a href="/clear-cart" class="clear-cart-button">Làm mới</a>
                     <a href="/checkout" class="checkout-button">Thanh toán</a>
@@ -82,7 +82,7 @@
                 </div>
                 <hr>
                 <p><strong>Số lượng tổng:</strong> <span th:text="${totalQuantity}">0</span></p>
-                <p><strong>Tổng tiền:</strong> <span th:text="${totalPrice}">0</span> đ</p>
+                <p><strong>Tổng tiền:</strong> <span th:text="${formattedTotalPrice}">0</span></p>
             </div>
         </div> 
     </div>

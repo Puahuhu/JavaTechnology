@@ -64,7 +64,7 @@ public class ProductController {
 
         model.addAttribute("cartItems", cartService.getCartItems());
         model.addAttribute("totalQuantity", cartService.getTotalQuantity());
-        model.addAttribute("totalPrice", cartService.getTotalPrice());
+        model.addAttribute("formattedTotalPrice", cartService.getFormattedTotalPrice());
 
         return "product-list";
     }
