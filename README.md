@@ -44,7 +44,7 @@ Dự án SpringCommerce sử dụng cấu trúc chuẩn của Maven với các t
 
   - **service**: Thư mục này chứa các lớp dịch vụ xử lý logic nghiệp vụ của ứng dụng, đóng vai trò trung gian giữa controller và repository, thực hiện các xử lý cần thiết trước khi gửi dữ liệu tới các thành phần khác.
 
-  - **SpringCommerceApplication.java**: Đây là điểm khởi động của ứng dụng Spring Boot, chứa phương thức `main` để chạy ứng dụng.
+  - **SpringCommerceApplication.java**: Đây là điểm khởi động của ứng dụng Spring Boot, chứa các phương thức để thêm dữ liệu vào cơ sở dữ liệu cũng như là phương thức để chạy ứng dụng.
 
 - **resources**: Thư mục này chứa các tài nguyên cần thiết cho ứng dụng.
 
@@ -54,5 +54,7 @@ Dự án SpringCommerce sử dụng cấu trúc chuẩn của Maven với các t
     - **images**: Chứa các hình ảnh sử dụng trong giao diện.
 
   - **templates**: Thư mục này chứa các tệp HTML sử dụng để hiển thị giao diện người dùng. Spring Boot sẽ sử dụng các tệp này để tạo trang web động, cho phép khách hàng xem sản phẩm, lọc sản phẩm, thêm vào giỏ hàng và thực hiện các thao tác đặt hàng.
+ 
+  - **application.properties**: Đây là nơi sẽ cấu hình cơ sở dữ liệu cho ứng dụng.
 
 Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đảm bảo tính nhất quán trong quy trình phát triển phần mềm theo mô hình Waterfall.
