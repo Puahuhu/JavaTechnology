@@ -31,7 +31,7 @@ public class LoginController {
         if (account != null) {
             return "redirect:/products";
         } else {
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("error", "Sai tài khoản hoặc mật khẩu");
             return "login";
         }
     }

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Login Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/error.css">
-</head>
-<body>
+<html>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      <h3 class="text-center text-secondary mt-5 mb-3">Đăng nhập</h3>
-      <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="/login" method="post">
-        <div class="form-group">
-          <label for="username">Tài khoản</label>
-          <input id="username" name="username" type="text" class="form-control" placeholder="Tài khoản" required>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+<div class="login-clean">
+    <form method="post">
+        <h2 class="sr-only">Đăng nhập</h2>
+
+        <div class="illustration">
+            <i class="icon ion-ios-navigate"></i>
         </div>
+
         <div class="form-group">
-          <label for="password">Mật khẩu</label>
-          <input id="password" name="password" type="password" class="form-control" placeholder="Mật khẩu" required>
+            <input id="username" name="username" type="text" class="form-control" placeholder="Tài khoản" required>
         </div>
+
         <div class="form-group">
-          <button class="btn btn-success px-5">Đăng nhập</button>
+            <input id="password" name="password" type="password" class="form-control" placeholder="Mật khẩu" required>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Đăng nhập</button>
         </div>
 
         <div th:if="${error}" class="error">
-          <p style="color:red;">[[${error}]]</p>
+            <p style="color:red;">[[${error}]]</p>
         </div>
-      </form>
-    </div>
-  </div>
+    </form>
 </div>
-
 </body>
 </html>
