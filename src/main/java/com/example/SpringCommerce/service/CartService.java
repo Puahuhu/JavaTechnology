@@ -4,7 +4,9 @@ import com.example.SpringCommerce.model.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 @Service
@@ -29,6 +31,12 @@ public class CartService {
         return cart.entrySet().stream()
                 .mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
+    }
+
+    public String getFormattedTotalPrice() {
+        double totalPrice = getTotalPrice();
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("vi", "VN"));
+        return formatter.format(totalPrice) + " đ";
     }
 
     public void clearCart() {

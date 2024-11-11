@@ -32,9 +32,9 @@ public class SpringCommerceApplication {
 			Genre soul = genreRepository.save(new Genre("Soul"));
 
 			productRepository.save(new Product("Elden Ring", 990000, online, fromSoftware, soul, "images/elden-ring.png"));
-			productRepository.save(new Product("Black Myth Wukong", 990000, offline, gameScience, hanhDong, "images/wukong.png"));
-			productRepository.save(new Product("Assassin's Creed: Origins", 990000, offline, ubisoft, hanhDong, "images/ac_origins.jpg"));
-			productRepository.save(new Product("Assassin's Creed Odyssey", 990000, offline, ubisoft, hanhDong, "images/ac_odyssey.jpg"));
+			productRepository.save(new Product("Black Myth Wukong", 1299000, offline, gameScience, hanhDong, "images/wukong.png"));
+			productRepository.save(new Product("Assassin's Creed: Origins", 1485000, offline, ubisoft, hanhDong, "images/ac_origins.jpg"));
+			productRepository.save(new Product("Assassin's Creed Odyssey", 1649000, offline, ubisoft, hanhDong, "images/ac_odyssey.jpg"));
 			productRepository.save(new Product("Assassin's Creed Valhalla", 990000, offline, ubisoft, hanhDong, "images/ac_valhalla.jpg"));
 			productRepository.save(new Product("Pacify", 73000, online, hitchcockGames, kinhDi, "images/pacify.jpg"));
 			productRepository.save(new Product("The Dark Pictures Anthology - Man of Medan", 348000, offline, supermassiveGames, kinhDi, "images/man_of_medan.jpg"));

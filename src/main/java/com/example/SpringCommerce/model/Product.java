@@ -2,6 +2,9 @@ package com.example.SpringCommerce.model;
 
 import jakarta.persistence.*;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 @Entity
 public class Product {
 
@@ -30,6 +33,11 @@ public class Product {
         this.studio = studio;
         this.genre = genre;
         this.img = img;
+    }
+
+    public String getFormattedPrice() {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("vi", "VN"));
+        return formatter.format(price) + " đ";
     }
 
     public int getId() {

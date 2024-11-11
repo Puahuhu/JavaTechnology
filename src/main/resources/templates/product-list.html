@@ -34,15 +34,19 @@
 
                 <div class="price-filter">
                     <span>Mức giá</span>
-                    <input type="number" id="priceMin" placeholder="Mức giá từ" min="0" step="10000" value="0">
+                    <input type="number" id="priceMin" name="priceMin" placeholder="Mức giá từ" min="0" step="10000" value="0">
                     <span>-</span>
-                    <input type="number" id="priceMax" placeholder="Mức giá đến" min="0" step="10000" value="0">
+                    <input type="number" id="priceMax" name="priceMax" placeholder="Mức giá đến" min="0" step="10000" value="0">
                 </div>
 
-                <select>
-                    <option selected disabled>Sắp xếp</option>
-                    <option value="macdinh">Mặc định</option>
+                <select name="sort" id="sort">
+                    <option value="default" selected>Mặc định</option>
+                    <option value="nameAsc">Tên (A-Z)</option>
+                    <option value="nameDesc">Tên (Z-A)</option>
+                    <option value="priceAsc">Giá thấp đến cao</option>
+                    <option value="priceDesc">Giá cao đến thấp</option>
                 </select>
+
                 <button class="filter-btn" type="submit">Filter</button>
                 <button class="reset-btn" onclick="resetFilters()">Reset</button>
             </div>
@@ -57,7 +61,7 @@
                     <a th:href="@{/product/{id}(id=${product.id})}" class="title-link">
                         <p class="title" th:text="${product.name}"></p>
                     </a>
-                    <p class="price" th:text="${product.price} + ' đ'"></p>
+                    <p class="price" th:text="${product.formattedPrice}"></p>
                     <button class="add-cart-button">
                         <a th:href="@{/add-to-cart/{id}(id=${product.id})}">Thêm</a>
                     </button>

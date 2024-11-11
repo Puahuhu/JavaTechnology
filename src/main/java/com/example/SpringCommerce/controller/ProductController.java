@@ -45,6 +45,7 @@ public class ProductController {
             @RequestParam(value = "priceMax", required = false) Double priceMax,
             @RequestParam(value = "studio", required = false) String studio,
             @RequestParam(value = "genre", required = false) String genre,
+            @RequestParam(value = "sort", required = false, defaultValue = "default") String sort,
             Model model) {
 
         List<Category> categories = categoryRepository.findAll();
@@ -55,7 +56,10 @@ public class ProductController {
         model.addAttribute("studios", studios);
         model.addAttribute("genres", genres);
 
-        List<Product> products = productService.filterProducts(category, priceMin, priceMax, studio, genre);
+        Double minPrice = (priceMin != null && priceMin > 0) ? priceMin : null;
+        Double maxPrice = (priceMax != null && priceMax > 0) ? priceMax : null;
+
+        List<Product> products = productService.filterAndSortProducts(category, minPrice, maxPrice, studio, genre, sort);
         model.addAttribute("products", products);
 
         model.addAttribute("cartItems", cartService.getCartItems());
