@@ -78,10 +78,10 @@ public class ProductController {
     }
 
     @GetMapping("/add-to-cart/{id}")
-    public String addToCart(@PathVariable("id") Integer id) {
+    public String addToCart(@PathVariable("id") Integer id, @RequestParam(value = "quantity", defaultValue = "1") int quantity) {
         Product product = productService.getProductById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
-        cartService.addProductToCart(product);
+        cartService.addProductToCart(product, quantity);
         return "redirect:/products";
     }
 

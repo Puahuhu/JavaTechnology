@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Product Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puahuhu Store</title>
+    <link href="../css/product_details.css" rel="stylesheet" />
 </head>
 <body>
-<h1>Product Details</h1>
+<header class="navbar">
+    <div class="container">
+        <a class="brand" href="/products">Puahuhu Store</a>
+    </div>
+</header>
 
-<div>
-    <p><strong>ID:</strong> <span th:text="${product.id}"></span></p>
-    <p><strong>Name:</strong> <span th:text="${product.name}"></span></p>
-    <p><strong>Price:</strong> <span th:text="${product.price}"></span></p>
-    <p><strong>Category:</strong> <span th:text="${product.category.name}"></span></p>
-    <p><strong>Studio:</strong> <span th:text="${product.studio.name}"></span></p>
-    <p><strong>Genre:</strong> <span th:text="${product.genre.name}"></span></p>
-</div>
-
-<a href="/products">Back to Product List</a>
-
+<section class="product-section">
+    <div class="container">
+        <div class="product-content">
+            <div class="product-image">
+                <img th:src="'../' + ${product.img}">
+            </div>
+            <div class="product-info">
+                <h1 class="product-title"> <span th:text="${product.name}"></span></h1>
+                <div class="product-price"><strong>Giá: </strong> <span th:text="${product.formattedPrice}"></span></div>
+                <ul class="product-details">
+                    <li><strong>Danh mục:</strong> <span th:text="${product.category.name}"></span></li>
+                    <li><strong>Thể loại:</strong> <span th:text="${product.genre.name}"></span></li>
+                    <li><strong>Xuất xứ:</strong> <span th:text="${product.studio.name}"></span></li>
+                </ul>
+                <div class="product-action">
+                    <form th:action="@{/add-to-cart/{id}(id=${product.id})}" method="get">
+                        <input class="quantity-input" type="number" name="quantity" value="1" min="1" />
+                        <button type="submit" class="add-to-cart">Thêm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

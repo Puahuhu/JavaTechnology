@@ -56,7 +56,7 @@
             <div class="product-grid">
                 <div th:each="product : ${products}" class="product">
                     <a th:href="@{/product/{id}(id=${product.id})}">
-                        <img th:src="${product.img}" alt="Random Code Steam">
+                        <img th:src="${product.img}">
                     </a>
                     <a th:href="@{/product/{id}(id=${product.id})}" class="title-link">
                         <p class="title" th:text="${product.name}"></p>

@@ -15,8 +15,12 @@ public class CartService {
 
     private final Map<Product, Integer> cart = new HashMap<>();
 
+    public void addProductToCart(Product product, int quantity) {
+        cart.put(product, cart.getOrDefault(product, 0) + quantity);
+    }
+
     public void addProductToCart(Product product) {
-        cart.put(product, cart.getOrDefault(product, 0) + 1);
+        addProductToCart(product, 1);
     }
 
     public Map<Product, Integer> getCartItems() {

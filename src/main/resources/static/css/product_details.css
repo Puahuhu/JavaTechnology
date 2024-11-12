@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Thanh điều hướng */
+.navbar {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.product-section {
+    padding: 2rem 0;
+}
+
+.product-content {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info {
+    max-width: 600px;
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.product-details {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-details li {
+    margin-bottom: 0.5rem;
+}
+
+.product-details li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.product-action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantity-input {
+    width: 3rem;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.add-to-cart {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.add-to-cart:hover {
+    background-color: #555;
+}
