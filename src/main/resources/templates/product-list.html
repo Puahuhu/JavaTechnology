@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Shopping</title>
-    <link rel="stylesheet" href="css/product_list.css">
+    <title>Puahuhu Store</title>
+    <link rel="stylesheet" href="/css/product_list.css"/>
 </head>
 <body>
+    <header class="navbar">
+        <div class="container">
+            <a class="brand" href="/products">Puahuhu Store</a>
+        </div>
+    </header>
+
     <div class="container">
         <h1>Danh mục game</h1>
         <form action="/products" method="get">
@@ -62,9 +68,9 @@
                         <p class="title" th:text="${product.name}"></p>
                     </a>
                     <p class="price" th:text="${product.formattedPrice}"></p>
-                    <button class="add-cart-button">
-                        <a th:href="@{/add-to-cart/{id}(id=${product.id})}">Thêm</a>
-                    </button>
+                    <form th:action="@{/add-to-cart/{id}(id=${product.id})}" method="get" style="display: inline;">
+                        <button class="add-cart-button" type="submit">Thêm</button>
+                    </form>
                 </div>
             </div>
 
@@ -72,7 +78,10 @@
                 <h2>Giỏ hàng</h2>
                 <div th:if="${cartItems.size() > 0}">
                     <div th:each="entry : ${cartItems}" class="cart-item">
-                            <p th:text="${entry.key.name} + ' - Số lượng: ' + ${entry.value}"></p>
+                        <p>
+                            <span th:text="${entry.key.name} + ' - SL: ' + ${entry.value}"></span>
+                            <a th:href="@{/remove-from-cart/{id}(id=${entry.key.id})}" class="remove-button">X</a>
+                        </p>
                     </div>
                     <a href="/clear-cart" class="clear-cart-button">Làm mới</a>
                     <a href="/checkout" class="checkout-button">Thanh toán</a>

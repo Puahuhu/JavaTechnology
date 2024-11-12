@@ -43,6 +43,10 @@ public class CartService {
         return formatter.format(totalPrice) + " đ";
     }
 
+    public void removeProductFromCart(Product product) {
+        cart.remove(product);
+    }
+
     public void clearCart() {
         cart.clear();
     }

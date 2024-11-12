@@ -85,6 +85,15 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @GetMapping("/remove-from-cart/{id}")
+    public String removeFromCart(@PathVariable("id") Integer id) {
+        Product product = productService.getProductById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+        cartService.removeProductFromCart(product);  // Gọi phương thức xóa trong CartService
+        return "redirect:/products";
+    }
+
+
     @GetMapping("/clear-cart")
     public String clearCart() {
         cartService.clearCart();
