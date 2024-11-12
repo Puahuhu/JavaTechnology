@@ -1,8 +1,8 @@
 function resetFilters() {
-    document.getElementById("category").selectedIndex = 0;
-    document.getElementById("genre").selectedIndex = 0;
-    document.getElementById("studio").selectedIndex = 0;
-
-    document.getElementById("priceMin").value = 0;
-    document.getElementById("priceMax").value = 0;
+    document.getElementById("category").value = "";
+    document.getElementById("genre").value = "";
+    document.getElementById("studio").value = "";
+    document.getElementById("priceMin").value = "";
+    document.getElementById("priceMax").value = "";
+    document.getElementById("sort").value = "default";
 }

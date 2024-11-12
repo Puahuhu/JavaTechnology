@@ -89,7 +89,7 @@ public class ProductController {
     public String removeFromCart(@PathVariable("id") Integer id) {
         Product product = productService.getProductById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
-        cartService.removeProductFromCart(product);  // Gọi phương thức xóa trong CartService
+        cartService.removeProductFromCart(product);
         return "redirect:/products";
     }
 
@@ -103,6 +103,7 @@ public class ProductController {
     @GetMapping("/checkout")
     public String checkout(Model model) {
         double totalPrice = cartService.getTotalPrice();
+        String formattedTotalPrice = cartService.getFormattedTotalPrice();
         Order order = new Order(totalPrice);
         orderRepository.save(order);
 
@@ -115,7 +116,7 @@ public class ProductController {
 
         model.addAttribute("order", order);
         model.addAttribute("orderDetails", orderDetails);
-        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("formattedTotalPrice", formattedTotalPrice);
 
         cartService.clearCart();
 

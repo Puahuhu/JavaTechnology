@@ -1,10 +1,11 @@
 package com.example.SpringCommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 @Entity
 public class OrderDetail {
@@ -22,13 +23,19 @@ public class OrderDetail {
     private int quantity;
     private double totalPrice;
 
-    public OrderDetail() {}
+    @Temporal(TemporalType.DATE)
+    private Date orderDate;
+
+    public OrderDetail() {
+        this.orderDate = new Date();
+    }
 
     public OrderDetail(Order order, Product product, int quantity, double totalPrice) {
         this.order = order;
         this.product = product;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
+        this.orderDate = new Date();
     }
 
     public Long getId() {
@@ -45,5 +52,19 @@ public class OrderDetail {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public String getFormattedTotalPrice() {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("vi", "VN"));
+        return formatter.format(totalPrice) + " đ";
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public String getFormattedOrderDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(orderDate);
     }
 }

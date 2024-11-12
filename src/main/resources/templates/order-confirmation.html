@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation</title>
+    <link rel="stylesheet" href="/css/confirmation.css">
 </head>
 <body>
-<h1>Order Confirmation</h1>
-
-<p>Thank you for your order!</p>
-<p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
-<p><strong>Total Price:</strong> <span th:text="${totalPrice}"></span> USD</p>
-
-<h2>Order Details</h2>
-<ul>
-    <li th:each="detail : ${orderDetails}">
-        <span th:text="${detail.product.name} + ' - Quantity: ' + ${detail.quantity} + ' - Total: ' + ${detail.totalPrice} + ' USD'"></span>
-    </li>
-</ul>
-
-<a href="/products">Continue Shopping</a>
-
+<div class="confirmation-container">
+    <div class="header">
+        <h1>Đặt hàng thành công</h1>
+        <div class="confirmation-details">
+            <p>Hóa đơn số: <span th:text="${order.id}"></span></p>
+            <p>Ngày đặt hàng: <span th:text="${#dates.format(orderDetails[0].orderDate, 'dd-MM-yyyy')}"></span></p>
+        </div>
+    </div>
+    <div class="items-container">
+        <hr>
+        <div class="item" th:each="detail : ${orderDetails}">
+            <span th:text="${detail.product.name} + ' - Số lượng: ' + ${detail.quantity}"></span>
+            <span th:text="${detail.getFormattedTotalPrice()}"></span>
+        </div>
+        <hr>
+        <div class="total">
+            <span>Tổng tiền:</span>
+            <span th:text="${formattedTotalPrice}"></span>
+        </div>
+    </div>
+    <a href="/products" class="continue-shopping">Tiếp tục mua hàng</a>
+</div>
 </body>
 </html>
