@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.text.SimpleDateFormat;
+
 @SpringBootApplication
 public class SpringCommerceApplication {
 
@@ -42,8 +44,7 @@ public class SpringCommerceApplication {
 			productRepository.save(new Product("The Dark Pictures Anthology: House of Ashes", 350000, offline, supermassiveGames, kinhDi, "images/house_of_ashes.jpg"));
 			productRepository.save(new Product("The Dark Pictures Anthology: The Devil in Me", 480000, offline, supermassiveGames, kinhDi, "images/the_evil_in_me.jpg"));
 
-			accountRepository.save(new Account(1, "user1", "123"));
-			accountRepository.save(new Account(2, "user2", "123"));
+			accountRepository.save(new Account("user1", "123", "Nguyễn Lê Tuấn Phương", "puahuhu@gmail.com", new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2004"), "images/phuong.png"));
 		};
 	}
 }

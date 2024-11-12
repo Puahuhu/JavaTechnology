@@ -38,6 +38,9 @@ public class ProductController {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     @GetMapping("/products")
     public String showProducts(
             @RequestParam(value = "category", required = false) String category,
@@ -121,5 +124,13 @@ public class ProductController {
         cartService.clearCart();
 
         return "order-confirmation";
+    }
+
+    @GetMapping("/user-information")
+    public String showUserProfile(Model model) {
+        Account account = accountRepository.findById(1).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+
+        model.addAttribute("account", account);
+        return "user-information";
     }
 }
