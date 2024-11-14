@@ -1,16 +1,16 @@
 # SpringCommerce
 
-SpringCommerce là một ứng dụng mua sắm trực tuyến đơn giản dành cho các sản phẩm của công ty. Ứng dụng này được xây dựng nhằm đáp ứng nhu cầu thị trường nhanh chóng với một phiên bản MVP (Minimum Viable Product) có các chức năng giới hạn.
+SpringCommerce là một ứng dụng web đơn giản dùng để bán những sản phẩm Game bản quyền của Puahuhu Store. Vì nhu cầu về việc mua game bản quyền đang ngày càng gia tăng, Puahuhu Store đã xây dựng SpringCommerce để đáp ứng với các chức năng còn hạn chế.
 
 ## Mô hình phát triển phần mềm
 
-Dự án này áp dụng mô hình phát triển phần mềm Waterfall, phù hợp cho một hệ thống đơn giản và yêu cầu rõ ràng như SpringCommerce. Mô hình Waterfall có các giai đoạn chính bao gồm:
+Dự án SpringCommerce của Puahuhu Store được áp dụng mô hình phát triển phần mềm Waterfall, phù hợp cho một hệ thống đơn giản và yêu cầu rõ ràng. Mô hình Waterfall có các giai đoạn chính bao gồm:
 
-1. **Phân tích yêu cầu**: Thu thập và xác định các yêu cầu từ đề bài. Dự án sẽ hỗ trợ hiển thị sản phẩm, tìm kiếm theo tiêu chí và đặt hàng qua giỏ hàng.
+1. **Phân tích yêu cầu**: Thu thập và xác định các yêu cầu từ đề bài. Dự án sẽ hỗ trợ hiển thị sản phẩm, lọc theo tiêu chí và đặt hàng qua giỏ hàng.
    
 2. **Thiết kế hệ thống**: Thiết kế cấu trúc cơ bản của ứng dụng web, bao gồm cơ sở dữ liệu và giao diện người dùng.
 
-3. **Lập trình**: Triển khai các tính năng cốt lõi như hiển thị sản phẩm, tìm kiếm, và quản lý giỏ hàng.
+3. **Lập trình**: Triển khai các tính năng cốt lõi như hiển thị sản phẩm, lọc, và quản lý giỏ hàng.
 
 4. **Kiểm thử**: Kiểm thử toàn bộ ứng dụng để đảm bảo tính năng hoạt động đúng theo yêu cầu.
 
@@ -18,7 +18,7 @@ Dự án này áp dụng mô hình phát triển phần mềm Waterfall, phù h�
 
 ## Chức năng chính
 
-1. **Hiển thị sản phẩm**: Giao diện đơn giản hiển thị toàn bộ sản phẩm mà công ty cung cấp. Người dùng có thể lọc và tìm kiếm sản phẩm theo các tiêu chí như danh mục, tên, giá, thương hiệu và màu sắc.
+1. **Hiển thị sản phẩm**: Giao diện đơn giản hiển thị toàn bộ Game bản quyền mà Puahuhu Store cung cấp. Người dùng có thể lọc và tìm kiếm sản phẩm theo các tiêu chí như danh mục, tên, giá, thể loại và studio làm ra nó.
 
 2. **Giỏ hàng và đặt hàng**: Người dùng có thể thêm sản phẩm vào giỏ hàng và tiến hành đặt hàng.
 
