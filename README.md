@@ -58,3 +58,25 @@ Dự án SpringCommerce sử dụng cấu trúc chuẩn của Maven với các t
   - **application.properties**: Đây là nơi sẽ cấu hình cơ sở dữ liệu cho ứng dụng.
 
 Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đảm bảo tính nhất quán trong quy trình phát triển phần mềm theo mô hình Waterfall.
+
+## Các bước để chạy ứng dụng
+
+- Đầu tiên ta sẽ nhấn vào phần Download ZIP để tải dự án về máy
+  
+     ![image](https://github.com/user-attachments/assets/da6e284a-6bd1-45d9-8382-e6fa2a4bf4f8)
+
+- Sau đó hãy giải nén và mở dự án bằng IntelliJ
+
+     ![image](https://github.com/user-attachments/assets/33f618c4-b291-4c8f-8139-934953b82edb)
+
+- Tiếp đến ta mở Xampp để kết nối vào cơ sở dữ liệu
+  
+     ![Screenshot 2024-11-14 145315](https://github.com/user-attachments/assets/14e453bf-6268-4d7d-be6f-97fe03e9c21b)
+
+- Kế đến ta sẽ nhấn vào nút chạy như ảnh dưới
+
+     ![image](https://github.com/user-attachments/assets/ec6ca7a3-8005-4cf5-82b8-c6c37c11ba65)
+
+- Cuối cùng ta vào Google Chrome hoặc các trình duyệt khác và chỉa tới đường dẫn localhost:8080, nếu như thành công ta sẽ được dẫn đến trang đăng nhập
+
+     ![image](https://github.com/user-attachments/assets/8d443c05-51ae-4b87-8eb4-f1f3d21f8499)
