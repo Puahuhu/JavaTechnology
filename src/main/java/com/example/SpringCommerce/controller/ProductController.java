@@ -38,6 +38,9 @@ public class ProductController {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     @GetMapping("/products")
     public String showProducts(
             @RequestParam(value = "category", required = false) String category,
@@ -104,7 +107,10 @@ public class ProductController {
     public String checkout(Model model) {
         double totalPrice = cartService.getTotalPrice();
         String formattedTotalPrice = cartService.getFormattedTotalPrice();
-        Order order = new Order(totalPrice);
+
+        Account currentUser = accountRepository.findById(1).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+
+        Order order = new Order(totalPrice, currentUser);
         orderRepository.save(order);
 
         List<OrderDetail> orderDetails = cartService.getCartItems().entrySet().stream()
@@ -122,6 +128,4 @@ public class ProductController {
 
         return "order-confirmation";
     }
-
-
 }
