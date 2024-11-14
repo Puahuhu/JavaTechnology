@@ -80,3 +80,29 @@ Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đả
 - Cuối cùng ta vào Google Chrome hoặc các trình duyệt khác và chỉa tới đường dẫn localhost:8080, nếu như thành công ta sẽ được dẫn đến trang đăng nhập
 
      ![image](https://github.com/user-attachments/assets/8d443c05-51ae-4b87-8eb4-f1f3d21f8499)
+
+## Kiểm thử API
+
+- Ta khởi động trang web và Postman để kiểm tra phương thức GET của trang http://localhost:8080/products
+
+  - Sau khi truyền phương thức GET vào Postman ta thu được kết quả là tất cả các sản phẩm có trong cơ sở dữ liệu
+
+     ![image](https://github.com/user-attachments/assets/e1f1bf4a-5397-421d-bfe5-297ce00e143a)
+
+  - Tiếp tục kiểm thử với id product là 1 ta sẽ chỉ có 1 giá trị sản phẩm được trả về
+ 
+    ![image](https://github.com/user-attachments/assets/5b0f1747-9643-41e1-8831-febf73da7498)
+
+  - Tương tự với id product là 2
+
+    ![image](https://github.com/user-attachments/assets/7d2002fc-eb58-4b79-aa9f-2d5edf2dadf8)
+
+  - Kiểm thử với id không tồn tại ta sẽ có kết quả sau
+ 
+    ![image](https://github.com/user-attachments/assets/8519a944-0cbc-4814-a694-8fc47ea6d133)
+
+
+
+
+
+
