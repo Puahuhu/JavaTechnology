@@ -44,11 +44,19 @@ public class ProductService {
         return products;
     }
 
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
     public Optional<Product> getProductById(Integer id) {
         return productRepository.findById(id);
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public void deleteProductById(Integer id) {
+        productRepository.deleteById(id);
     }
 }

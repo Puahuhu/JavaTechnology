@@ -45,6 +45,10 @@ public class Order {
         this.account = account;
     }
 
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
     public List<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
