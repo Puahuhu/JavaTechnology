@@ -1,16 +1,16 @@
 # SpringCommerce
 
-SpringCommerce là một ứng dụng mua sắm trực tuyến đơn giản dành cho các sản phẩm của công ty. Ứng dụng này được xây dựng nhằm đáp ứng nhu cầu thị trường nhanh chóng với một phiên bản MVP (Minimum Viable Product) có các chức năng giới hạn.
+SpringCommerce là một ứng dụng web đơn giản dùng để bán những sản phẩm Game bản quyền của Puahuhu Store. Vì nhu cầu về việc mua game bản quyền đang ngày càng gia tăng, Puahuhu Store đã xây dựng SpringCommerce để đáp ứng với các chức năng còn hạn chế.
 
 ## Mô hình phát triển phần mềm
 
-Dự án này áp dụng mô hình phát triển phần mềm Waterfall, phù hợp cho một hệ thống đơn giản và yêu cầu rõ ràng như SpringCommerce. Mô hình Waterfall có các giai đoạn chính bao gồm:
+Dự án SpringCommerce của Puahuhu Store được áp dụng mô hình phát triển phần mềm Waterfall, phù hợp cho một hệ thống đơn giản và yêu cầu rõ ràng. Mô hình Waterfall có các giai đoạn chính bao gồm:
 
-1. **Phân tích yêu cầu**: Thu thập và xác định các yêu cầu từ đề bài. Dự án sẽ hỗ trợ hiển thị sản phẩm, tìm kiếm theo tiêu chí và đặt hàng qua giỏ hàng.
+1. **Phân tích yêu cầu**: Thu thập và xác định các yêu cầu từ đề bài. Dự án sẽ hỗ trợ hiển thị sản phẩm, lọc theo tiêu chí và đặt hàng qua giỏ hàng.
    
 2. **Thiết kế hệ thống**: Thiết kế cấu trúc cơ bản của ứng dụng web, bao gồm cơ sở dữ liệu và giao diện người dùng.
 
-3. **Lập trình**: Triển khai các tính năng cốt lõi như hiển thị sản phẩm, tìm kiếm, và quản lý giỏ hàng.
+3. **Lập trình**: Triển khai các tính năng cốt lõi như hiển thị sản phẩm, lọc, và quản lý giỏ hàng.
 
 4. **Kiểm thử**: Kiểm thử toàn bộ ứng dụng để đảm bảo tính năng hoạt động đúng theo yêu cầu.
 
@@ -18,7 +18,7 @@ Dự án này áp dụng mô hình phát triển phần mềm Waterfall, phù h�
 
 ## Chức năng chính
 
-1. **Hiển thị sản phẩm**: Giao diện đơn giản hiển thị toàn bộ sản phẩm mà công ty cung cấp. Người dùng có thể lọc và tìm kiếm sản phẩm theo các tiêu chí như danh mục, tên, giá, thương hiệu và màu sắc.
+1. **Hiển thị sản phẩm**: Giao diện đơn giản hiển thị toàn bộ Game bản quyền mà Puahuhu Store cung cấp. Người dùng có thể lọc và tìm kiếm sản phẩm theo các tiêu chí như danh mục, tên, giá, thể loại và studio làm ra nó.
 
 2. **Giỏ hàng và đặt hàng**: Người dùng có thể thêm sản phẩm vào giỏ hàng và tiến hành đặt hàng.
 
@@ -58,3 +58,51 @@ Dự án SpringCommerce sử dụng cấu trúc chuẩn của Maven với các t
   - **application.properties**: Đây là nơi sẽ cấu hình cơ sở dữ liệu cho ứng dụng.
 
 Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đảm bảo tính nhất quán trong quy trình phát triển phần mềm theo mô hình Waterfall.
+
+## Các bước để chạy ứng dụng
+
+- Đầu tiên ta sẽ nhấn vào phần Download ZIP để tải dự án về máy
+  
+     ![image](https://github.com/user-attachments/assets/da6e284a-6bd1-45d9-8382-e6fa2a4bf4f8)
+
+- Sau đó hãy giải nén và mở dự án bằng IntelliJ
+
+     ![image](https://github.com/user-attachments/assets/33f618c4-b291-4c8f-8139-934953b82edb)
+
+- Tiếp đến ta mở Xampp để kết nối vào cơ sở dữ liệu
+  
+     ![Screenshot 2024-11-14 145315](https://github.com/user-attachments/assets/14e453bf-6268-4d7d-be6f-97fe03e9c21b)
+
+- Kế đến ta sẽ nhấn vào nút chạy như ảnh dưới
+
+     ![image](https://github.com/user-attachments/assets/ec6ca7a3-8005-4cf5-82b8-c6c37c11ba65)
+
+- Cuối cùng ta vào Google Chrome hoặc các trình duyệt khác và chỉa tới đường dẫn localhost:8080, nếu như thành công ta sẽ được dẫn đến trang đăng nhập
+
+     ![image](https://github.com/user-attachments/assets/8d443c05-51ae-4b87-8eb4-f1f3d21f8499)
+
+## Kiểm thử API
+
+- Ta khởi động trang web và Postman để kiểm tra phương thức GET của trang http://localhost:8080/products
+
+  - Sau khi truyền phương thức GET vào Postman ta thu được kết quả là tất cả các sản phẩm có trong cơ sở dữ liệu
+
+     ![image](https://github.com/user-attachments/assets/e1f1bf4a-5397-421d-bfe5-297ce00e143a)
+
+  - Tiếp tục kiểm thử với id product là 1 ta sẽ chỉ có 1 giá trị sản phẩm được trả về
+ 
+    ![image](https://github.com/user-attachments/assets/5b0f1747-9643-41e1-8831-febf73da7498)
+
+  - Tương tự với id product là 2
+
+    ![image](https://github.com/user-attachments/assets/7d2002fc-eb58-4b79-aa9f-2d5edf2dadf8)
+
+  - Kiểm thử với id không tồn tại ta sẽ có kết quả sau
+ 
+    ![image](https://github.com/user-attachments/assets/8519a944-0cbc-4814-a694-8fc47ea6d133)
+
+
+
+
+
+
