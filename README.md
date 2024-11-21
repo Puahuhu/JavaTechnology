@@ -83,26 +83,90 @@ Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đả
 
 ## Kiểm thử API
 
-- Ta khởi động trang web và Postman để kiểm tra phương thức GET của trang http://localhost:8080/products
+- Đối với Product ta sẽ có các phương thức:
+  
+   - **GET**:
+     
+      - http://localhost:8080/api/products: dùng để hiện thị tất cả các sản phẩm có trong cơ sở dữ liệu
 
-  - Sau khi truyền phương thức GET vào Postman ta thu được kết quả là tất cả các sản phẩm có trong cơ sở dữ liệu
+         ![image](https://github.com/user-attachments/assets/fb416c31-f115-4b0b-918f-106c977a7cd8)
 
-     ![image](https://github.com/user-attachments/assets/e1f1bf4a-5397-421d-bfe5-297ce00e143a)
+      - http://localhost:8080/api/product/{id}: dùng để hiện thị sản phẩm ứng với id của sản phẩm có trong cơ sở dữ liệu
 
-  - Tiếp tục kiểm thử với id product là 1 ta sẽ chỉ có 1 giá trị sản phẩm được trả về
+         ![image](https://github.com/user-attachments/assets/d495f96f-f85f-4480-b784-8bf620ae0bb4)
+
+   - **POST**: http://localhost:8080/api/product: dùng để thêm sản phẩm vào cơ sở dữ liệu
  
-    ![image](https://github.com/user-attachments/assets/5b0f1747-9643-41e1-8831-febf73da7498)
+      - Cơ sở dữ liệu hiện tại đang có id lớn nhất là 10:
+    
+        ![image](https://github.com/user-attachments/assets/933c7042-534c-4460-a1ff-296fb807b02d)
+          
+      - Ta sẽ thêm như sau bằng phương thức **POST**:
+    
+        ![image](https://github.com/user-attachments/assets/74b91001-8087-4463-a492-9df8b86e5551)
 
-  - Tương tự với id product là 2
+      - Cơ sở dữ liệu sau khi thêm sản phẩm mới vào:
+    
+        ![image](https://github.com/user-attachments/assets/1f715aac-1129-44af-84be-90da22dcd625)
 
-    ![image](https://github.com/user-attachments/assets/7d2002fc-eb58-4b79-aa9f-2d5edf2dadf8)
+     - Cuối cùng là ở localhost ta cũng đã thêm sản phẩm Assassin's Creed II sau khi sử dụng phương thức POST
 
-  - Kiểm thử với id không tồn tại ta sẽ có kết quả sau
+        ![image](https://github.com/user-attachments/assets/a4cc77ea-c00e-4e4a-85e0-0f2cc7d35cd1)
+
+   - **PUT**: http://localhost:8080/api/product/{id}: dùng để chỉnh sửa sản phẩm ứng với id sản phảm phẩm có trong cơ sở dữ liệu
+
+      - Ta sẽ sử dụng phương thức **GET** để lấy sản phẩm với id tùy chọn, ảnh dưới đây sẽ chọn id là 11:
+    
+        ![image](https://github.com/user-attachments/assets/75c3b02a-86c4-4d39-8f99-985aa278d707)
+
+      - Sau đó sử dụng phương thức **PUT** để chỉnh sửa như sau, ảnh dưới sẽ chỉnh sửa giá từ 599.000đ thành 600.000đ:
+    
+        ![image](https://github.com/user-attachments/assets/19654a42-7217-4c84-a2bb-e19134399e69)
+
+      - Tiếp đến ta sẽ kiểm tra lại bằng phương thức **GET**:
+    
+        ![image](https://github.com/user-attachments/assets/b9fc8b2f-199e-4e68-b2e7-750630818ffc)
+
+      - Cuối cùng là kiểm tra trên localhost:
+    
+        ![image](https://github.com/user-attachments/assets/f023e086-bd62-4378-bd97-c297a1641f48)
+
+   - **DELETE**: http://localhost:8080/api/product/{id}: dùng để xóa sản phẩm ứng với id sản phẩm có trong cơ sở dữ liệu
  
-    ![image](https://github.com/user-attachments/assets/8519a944-0cbc-4814-a694-8fc47ea6d133)
+      - Ta sẽ sử dụng phương thức **DELETE** để xóa sản phẩm với id bất kì, ảnh dưới sẽ chọn id là 11 tương ứng với Assassin's Creed II:
+    
+        ![image](https://github.com/user-attachments/assets/d1f724c1-75d1-4ef9-bd54-fd979d5f28ef)
 
+      - Sau khi xóa ta kiểm tra lại bằng phương thức **GET**:
+    
+        ![image](https://github.com/user-attachments/assets/4905e514-5eec-4aeb-a993-72c911d777cb)
 
+      - Cuối cùng ta kiểm tra trên localhost:
+    
+        ![image](https://github.com/user-attachments/assets/dafbf096-eb45-48e9-8f41-5596d256aa05)
 
+- Đối với Order ta sẽ có các phương thức:
+  
+   - **GET**:
+ 
+     - http://localhost:8080/api/orders: dùng để hiện thị tất cả các hóa đơn có trong cơ sở dữ liệu
 
+         ![image](https://github.com/user-attachments/assets/1fb67824-df1c-4bbb-bb6a-7d4519ea5584)
 
+      - http://localhost:8080/api/orders/{id}: dùng để hiện thị hóa đơn ứng với id của hóa đơn có trong cơ sở dữ liệu
 
+         ![image](https://github.com/user-attachments/assets/59bee0ae-48cf-4d94-9215-baf2d6c2162f)
+
+   - **DELETE**: http://localhost:8080/api/order/{id}: dùng để xóa hóa đơn ứng với id hóa đơn có trong cơ sở dữ liệu
+ 
+      - Ta sẽ sử dụng phương thức **DELETE** để xóa hóa đơn với id bất kì, ảnh dưới sẽ chọn id là 2:
+ 
+        ![image](https://github.com/user-attachments/assets/2a9320d9-2f01-42a1-aded-831c48135a0a)
+
+      - Sau khi xóa ta kiểm tra lại bằng phương thức **GET**:
+    
+        ![image](https://github.com/user-attachments/assets/676e064b-dfbc-47f6-95fa-99465e5cebb7)
+
+      - Cuối cùng ta kiểm tra trên localhost:
+    
+        ![image](https://github.com/user-attachments/assets/12b5f591-6d46-4604-a5b8-a73b8118670f)
