@@ -109,7 +109,7 @@ Cấu trúc này giúp ứng dụng dễ dàng bảo trì, mở rộng và đả
     
         ![image](https://github.com/user-attachments/assets/1f715aac-1129-44af-84be-90da22dcd625)
 
-     - Cuối cùng là ở localhost ta cũng đã thêm sản phẩm Assassin's Creed II sau khi sử dụng phương thức POST
+     - Cuối cùng là ở localhost ta cũng đã thêm sản phẩm Assassin's Creed II sau khi sử dụng phương thức **POST**
 
         ![image](https://github.com/user-attachments/assets/a4cc77ea-c00e-4e4a-85e0-0f2cc7d35cd1)
 
