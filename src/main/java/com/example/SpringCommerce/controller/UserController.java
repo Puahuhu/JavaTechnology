@@ -43,7 +43,7 @@ public class UserController {
         Account currentUser = (Account) session.getAttribute("currentUser");
 
         if (currentUser == null) {
-            throw new IllegalArgumentException("Người dùng chưa đăng nhập.");
+            return "redirect:/login";
         }
 
         List<Order> orders = orderRepository.findByAccount(currentUser);
@@ -58,27 +58,27 @@ public class UserController {
         return "order-history";
     }
 
+
     @GetMapping("/order-confirmation/{id}")
     public String showOrderConfirmation(@PathVariable("id") Long orderId, Model model, HttpSession session) {
         Account currentUser = (Account) session.getAttribute("currentUser");
 
         if (currentUser == null) {
-            throw new IllegalArgumentException("Người dùng chưa đăng nhập.");
+            return "redirect:/login";
         }
 
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid order ID: " + orderId));
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy đơn hàng với ID: " + orderId));
 
-        if (!order.getAccount().equals(currentUser)) {
+        if (order.getAccount().getId() != currentUser.getId()) {
             throw new IllegalArgumentException("Bạn không có quyền truy cập vào đơn hàng này.");
         }
 
         List<OrderDetail> orderDetails = order.getOrderDetails();
-        String formattedTotalPrice = order.getFormattedTotalPrice();
 
         model.addAttribute("order", order);
         model.addAttribute("orderDetails", orderDetails);
-        model.addAttribute("formattedTotalPrice", formattedTotalPrice);
+        model.addAttribute("formattedTotalPrice", order.getFormattedTotalPrice());
 
         return "order-confirmation";
     }
