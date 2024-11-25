@@ -35,4 +35,9 @@ public class LoginController {
             return "login";
         }
     }
+
+    @PostMapping("/logout")
+    public String handleLogout() {
+        return "redirect:/login";
+    }
 }
