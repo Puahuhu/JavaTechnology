@@ -69,7 +69,6 @@ public class UserController {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid order ID: " + orderId));
 
-        // Kiểm tra xem đơn hàng có thuộc về tài khoản đăng nhập không
         if (!order.getAccount().equals(currentUser)) {
             throw new IllegalArgumentException("Bạn không có quyền truy cập vào đơn hàng này.");
         }

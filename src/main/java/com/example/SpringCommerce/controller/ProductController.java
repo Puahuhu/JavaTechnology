@@ -4,6 +4,7 @@ import com.example.SpringCommerce.model.*;
 import com.example.SpringCommerce.repository.*;
 import com.example.SpringCommerce.service.CartService;
 import com.example.SpringCommerce.service.ProductService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -102,11 +103,11 @@ public class ProductController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(Model model) {
+    public String checkout(Model model, HttpSession session) {
+        Account currentUser = (Account) session.getAttribute("currentUser");
+
         double totalPrice = cartService.getTotalPrice();
         String formattedTotalPrice = cartService.getFormattedTotalPrice();
-
-        Account currentUser = accountRepository.findById(1).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
 
         Order order = new Order(totalPrice, currentUser);
         orderRepository.save(order);
