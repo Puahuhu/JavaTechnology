@@ -8,6 +8,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 @Entity
+@Table(name = "order_details")
 public class OrderDetail {
 
     @Id
