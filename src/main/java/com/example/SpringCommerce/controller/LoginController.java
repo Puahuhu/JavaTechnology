@@ -1,5 +1,7 @@
 package com.example.SpringCommerce.controller;
 
+import jakarta.servlet.http.HttpSession;
+
 import com.example.SpringCommerce.model.Account;
 import com.example.SpringCommerce.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(String username, String password, Model model) {
+    public String login(String username, String password, Model model, HttpSession session) {
         Account account = accountRepository.findByUsernameAndPassword(username, password);
 
         if (account != null) {
+            session.setAttribute("currentUser", account);
             return "redirect:/products";
         } else {
             model.addAttribute("error", "Sai tài khoản hoặc mật khẩu");

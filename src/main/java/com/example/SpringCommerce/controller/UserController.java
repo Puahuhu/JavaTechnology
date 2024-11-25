@@ -1,5 +1,7 @@
 package com.example.SpringCommerce.controller;
 
+import jakarta.servlet.http.HttpSession;
+
 import com.example.SpringCommerce.model.Account;
 import com.example.SpringCommerce.model.Order;
 import com.example.SpringCommerce.model.OrderDetail;
@@ -25,16 +27,24 @@ public class UserController {
     private OrderRepository orderRepository;
 
     @GetMapping("/user-information")
-    public String showUserProfile(Model model) {
-        Account account = accountRepository.findById(1).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+    public String showUserProfile(Model model, HttpSession session) {
+        Account account = (Account) session.getAttribute("currentUser");
+
+        if (account == null) {
+            throw new IllegalArgumentException("Người dùng chưa đăng nhập.");
+        }
 
         model.addAttribute("account", account);
         return "user-information";
     }
 
     @GetMapping("/order-history")
-    public String showOrderHistory(Model model) {
-        Account currentUser = accountRepository.findById(1).orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+    public String showOrderHistory(Model model, HttpSession session) {
+        Account currentUser = (Account) session.getAttribute("currentUser");
+
+        if (currentUser == null) {
+            throw new IllegalArgumentException("Người dùng chưa đăng nhập.");
+        }
 
         List<Order> orders = orderRepository.findByAccount(currentUser);
         model.addAttribute("orders", orders);
@@ -49,9 +59,20 @@ public class UserController {
     }
 
     @GetMapping("/order-confirmation/{id}")
-    public String showOrderConfirmation(@PathVariable("id") Long orderId, Model model) {
+    public String showOrderConfirmation(@PathVariable("id") Long orderId, Model model, HttpSession session) {
+        Account currentUser = (Account) session.getAttribute("currentUser");
+
+        if (currentUser == null) {
+            throw new IllegalArgumentException("Người dùng chưa đăng nhập.");
+        }
+
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid order ID: " + orderId));
+
+        // Kiểm tra xem đơn hàng có thuộc về tài khoản đăng nhập không
+        if (!order.getAccount().equals(currentUser)) {
+            throw new IllegalArgumentException("Bạn không có quyền truy cập vào đơn hàng này.");
+        }
 
         List<OrderDetail> orderDetails = order.getOrderDetails();
         String formattedTotalPrice = order.getFormattedTotalPrice();
