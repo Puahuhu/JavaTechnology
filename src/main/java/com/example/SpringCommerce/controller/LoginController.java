@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 
 @Controller
 public class LoginController {
@@ -38,6 +42,31 @@ public class LoginController {
 
     @PostMapping("/logout")
     public String handleLogout() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String handleRegister(@ModelAttribute Account account,
+                                 @RequestParam("password-repeat") String passwordRepeat,
+                                 Model model) {
+        if (!account.getPassword().equals(passwordRepeat)) {
+            model.addAttribute("error", "Mật khẩu không khớp");
+            return "register";
+        }
+
+        if (accountRepository.existsByUsername(account.getUsername())) {
+            model.addAttribute("error", "Tên tài khoản đã tồn tại");
+            return "register";
+        }
+
+        account.setAvatar("images/avatar.png");
+        accountRepository.save(account);
+
         return "redirect:/login";
     }
 }

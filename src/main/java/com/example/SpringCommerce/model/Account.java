@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +20,8 @@ public class Account {
     private String password;
     private String fullName;
     private String email;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     public Account() {}
@@ -79,6 +82,8 @@ public class Account {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    public void setAvatar(String avatar) {this.avatar = avatar;}
 
     public String getAvatar() {
         return avatar;

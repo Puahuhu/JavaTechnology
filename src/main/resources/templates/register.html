@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body>
+<form action="/register" method="post">
+    <div class="container">
+        <h1>Đăng ký</h1>
+        <p>Xin hãy điền thông tin để đăng ký.</p>
+        <hr>
+
+        <label for="username"><b>Tên tài khoản</b></label>
+        <input type="text" placeholder="Nhập tên tài khoản" name="username" id="username" required>
+
+        <label for="fullName"><b>Họ tên</b></label>
+        <input type="text" placeholder="Nhập họ tên" name="fullName" id="fullName" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Nhập Email" name="email" id="email" required>
+
+        <label for="dateOfBirth"><b>Ngày sinh</b></label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
+
+        <label for="psw"><b>Mật khẩu</b></label>
+        <input type="password" placeholder="Nhập mật khẩu" name="password" id="psw" required>
+
+        <label for="psw-repeat"><b>Xác nhận mật khẩu</b></label>
+        <input type="password" placeholder="Nhập lại mật khẩu" name="password-repeat" id="psw-repeat" required>
+        <hr>
+
+        <button type="submit" class="registerbtn">Đăng ký</button>
+    </div>
+</form>
+</body>
+
+</html>
